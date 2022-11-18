@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
     - name: Create folder
       run: mkdir out
     - name: Pull the Docker image
@@ -19,8 +23,8 @@ jobs:
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
     - name: Check result
       run: ls -la out
-    - name: Upload Polystat Jar
-      run: curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
+    #- name: Upload Polystat Jar
+    #  run: curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
     - name: Run Polystat Jar
       run: java -jar polystat-0.6.0-jar-with-dependencies.jar --files=out
     - name: Check result2

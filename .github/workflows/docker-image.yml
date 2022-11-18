@@ -21,3 +21,8 @@ jobs:
       run: ls -la out
     - name: Upload Polystat Jar
       run: curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
+    - uses: actions/setup-java@v3
+    - name: Run Polystat Jar
+      run: java -jar polystat-0.6.0-jar-with-dependencies.jar --files=out
+    - name: Check result2
+      run: ls -la out

@@ -8,4 +8,4 @@ ls -al test
 ls -al out
 
 curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
-java -jar target/polystat-0.6.0-jar-with-dependencies.jar --files=out
+java -jar polystat-0.6.0-jar-with-dependencies.jar --files=out

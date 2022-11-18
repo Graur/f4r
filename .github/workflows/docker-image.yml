@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Create folder
+      run: mkdir out
     - name: Pull the Docker image
       run: docker pull yegor256/c2eo:0.1.24
     - name: Run the Docker image

@@ -1,3 +1,3 @@
-int test(int x) {
+int test() {
     return 100 / x;
 }

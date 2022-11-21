@@ -26,9 +26,10 @@ jobs:
     - name: Run Polystat (EO)
       run: |
         curl -L -o polystat.jar "https://github.com/polystat/polystat-cli/releases/download/v0.1.11/polystat.jar"
+        echo "Polystat (EO) analysis has started"
         touch polystat-eo-out.txt
-        java -jar polystat.jar eo --in temp/sources/eo --to file=results/polystat-eo-out.txt --sarif
-        cat polystat-eo-out.txt
+        java -jar polystat.jar eo --in out --to file=polystat-eo-out.txt --sarif
+        echo "Polystat (EO) analysis has finished"o polystat.jar"
     - name: Check result2
       run: cat polystat-eo-out.txt
         # Saving artifacts

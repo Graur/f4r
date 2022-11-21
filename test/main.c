@@ -1,4 +1,4 @@
-auto test(bool x, int y, int z) -> int {
+auto main(bool x, int y, int z) -> int {
     int result = 0;
     if (x) {
         result = y;
@@ -7,8 +7,4 @@ auto test(bool x, int y, int z) -> int {
         result = z / y;
     }
     return result;
-}
-
-auto main() -> int {
-    return test(false, 0, 0);
 }

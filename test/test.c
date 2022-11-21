@@ -1,3 +1,7 @@
-int main(int argc, char *argv[]) {
-    return 100 / argc;
+int main() {
+    return check(0);
+}
+
+int check(int x) {
+    return 42 / x;
 }

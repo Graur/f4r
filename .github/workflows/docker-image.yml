@@ -22,7 +22,7 @@ jobs:
     - name: Run the Docker image
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
     - name: Check result
-      run: ls -la out
+      run: pwd
     #- name: Upload Polystat Jar
     #  run: curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
     - name: Run Polystat Jar
@@ -33,5 +33,5 @@ jobs:
     - name: Upload results
       uses: actions/upload-artifact@v3
       with:
-        name: reports
-        path: /*.txt
+        name: polystat-eo-out
+        path: polystat-eo-out.txt

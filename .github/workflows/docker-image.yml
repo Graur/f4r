@@ -15,24 +15,18 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Create folder
-      run: mkdir out
     - name: Pull the Docker image
-      run: docker pull yegor256/c2eo:0.1.24
+      run: |
+        mkdir out
+        docker pull yegor256/c2eo:0.1.24
     - name: Run the Docker image
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
     - name: Check result
       run: pwd
-    - name: Run Polystat (EO)
-      run: |
-        curl -L -o polystat.jar "https://github.com/polystat/polystat-cli/releases/download/v0.1.11/polystat.jar"
-        echo "Polystat (EO) analysis has started"
-        touch polystat-eo-out.txt
-        java -jar polystat.jar eo --in out --to file=polystat-eo-out.txt --sarif
-        echo "Polystat (EO) analysis has finished"o polystat.jar"
+    - name: Run Polystat Jar
+      run: bash polystat.sh
     - name: Check result2
       run: cat polystat-eo-out.txt
-        # Saving artifacts
     - name: Upload results
       uses: actions/upload-artifact@v3
       with:

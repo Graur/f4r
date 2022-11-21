@@ -20,7 +20,7 @@ jobs:
         mkdir out
         docker pull yegor256/c2eo:0.1.24
     - name: Run the Docker image
-      run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/test.c out/global.eo
+      run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/main.c out/global.eo
     - name: Check out/global.eo
       run: cat out/global.eo
     - name: Run Polystat Jar

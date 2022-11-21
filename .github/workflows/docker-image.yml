@@ -23,10 +23,12 @@ jobs:
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
     - name: Check result
       run: pwd
-    #- name: Upload Polystat Jar
-    #  run: curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
-    - name: Run Polystat Jar
-      run: bash polystat.sh
+    - name: Run Polystat (EO)
+      run: |
+        curl -L -o polystat.jar "https://github.com/polystat/polystat-cli/releases/download/v0.1.11/polystat.jar"
+        touch polystat-eo-out.txt
+        java -jar polystat.jar eo --in temp/sources/eo --to file=results/polystat-eo-out.txt --sarif
+        cat polystat-eo-out.txt
     - name: Check result2
       run: cat polystat-eo-out.txt
         # Saving artifacts

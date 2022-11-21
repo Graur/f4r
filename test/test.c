@@ -1,3 +1,3 @@
-int test() {
-    return 100 / x;
+int main(int argc, char *argv[]) {
+    return 100 / argc;
 }

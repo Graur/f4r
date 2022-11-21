@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir out
 chmod -R 777 test
 docker pull yegor256/c2eo:0.1.24

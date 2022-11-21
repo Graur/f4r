@@ -28,4 +28,4 @@ jobs:
     - name: Run Polystat Jar
       run: bash polystat.sh
     - name: Check result2
-      run: ls -la
+      run: cat polystat-eo-out.txt

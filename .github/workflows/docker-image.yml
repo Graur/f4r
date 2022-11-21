@@ -28,9 +28,11 @@ jobs:
     - name: Run Polystat Jar
       run: bash polystat.sh
     - name: Check result2
-      run: cat polystat-eo-out.txt
-    - name: 'Upload Artifact'
+      run: cat results/polystat-eo-out.txt
+        # Saving artifacts
+    - name: Upload results
       uses: actions/upload-artifact@v3
       with:
-        name: polystat-eo-out
-        path: polystat-eo-out.txt
+        name: reports
+        path: |
+          results/*.txt

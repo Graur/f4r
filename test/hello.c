@@ -5,6 +5,6 @@ auto test() -> int {
     return 1 / 0;
 }
 
-auto main() -> int {
+auto hello() -> int {
     cout << test();
 }

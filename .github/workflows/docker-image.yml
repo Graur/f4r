@@ -21,6 +21,8 @@ jobs:
         docker pull yegor256/c2eo:0.1.24
     - name: Run the Docker image
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
+    - name: Check out/hello.eo
+      run: cat out/hello.eo
     - name: Run Polystat Jar
       run: bash polystat.sh
     - name: Check polystat-eo-out.txt

@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-auto test() -> int {
-    return 1 / 0;
+auto test(int a, int b) -> int {
+    return (a / b) + ((b / a) / a);
 }
 
 auto hello() -> int {
-    cout << test();
+    cout << test(42, 0);
 }

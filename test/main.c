@@ -1,10 +1,10 @@
-auto main(bool x, int y, int z) -> int {
-    int result = 0;
-    if (x) {
-        result = y;
-    }
-    else {
-        result = z / y;
-    }
-    return result;
+#include <iostream>
+using namespace std;
+
+auto test(int x) -> int {
+    return 100 / (100 * x);
+}
+
+auto main() -> int {
+    cout << test(0);
 }

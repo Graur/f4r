@@ -23,6 +23,8 @@ jobs:
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/check.c out/global.eo
     - name: Check out/global.eo
       run: cat out/global.eo
+    - name: Removing goto
+      run: bash dejump.sh
     - name: Run Polystat Jar
       run: bash polystat.sh
     - name: Check polystat-eo-out.txt

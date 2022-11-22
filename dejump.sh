@@ -6,4 +6,4 @@ echo "Dejump jar was downloaded"
 java -jar dejump-0.0.2-jar-with-dependencies.jar --eo out/global.eo
 echo "GOTO was removed, check the result: "
 ls -la
-ls-la generated
+ls -la out

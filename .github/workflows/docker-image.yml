@@ -19,6 +19,8 @@ jobs:
       run: |
         mkdir out
         docker pull yegor256/c2eo:0.1.24
+    - name: Copy c2o.cooperators
+      run: copy.sh
     - name: Run the Docker image
       run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/check.c out/global.eo
     - name: Check out/global.eo

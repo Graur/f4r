@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkrid out/c2eo
+mkdir out/c2eo
 git clone "https://github.com/polystat/c2eo.git" --branch master
 ls -la
 ls -la c2eo

@@ -38,4 +38,3 @@ echo "Finished running"
 
 echo "Check polystat-eo-out.txt"
 cat polystat-eo-out.txt
-echo "Finished checking"

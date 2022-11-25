@@ -4,8 +4,6 @@ file=$1
 
 echo "Pull c2eo Docker image"
 mkdir out
-ls -la
-ls -la test
 docker pull yegor256/c2eo:0.1.24
 echo "Finished pulling"
 
@@ -14,6 +12,7 @@ docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 $file out/hello.eo
 echo "Finished running"
 
 echo "Check out/global.eo"
+ls -la out
 cat out/global.eo
 echo "Finished cheking"
 

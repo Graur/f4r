@@ -15,24 +15,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Pull the Docker image
-      run: |
-        mkdir out
-        docker pull yegor256/c2eo:0.1.24
-    - name: Copy c2o.cooperators
-      run: bash copy.sh
-    - name: Run the Docker image
-      run: docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/check.c out/global.eo
-    - name: Check out/global.eo
-      run: |
-        ls -la out
-        cat out/global.eo
-    - name: Removing goto
-      run: bash dejump.sh
-    - name: Run Polystat Jar
-      run: bash polystat.sh
-    - name: Check polystat-eo-out.txt
-      run: cat polystat-eo-out.txt
+    - name: Validate
+      run: bash run.sh test/check.c
     - name: Upload results
       uses: actions/upload-artifact@v3
       with:

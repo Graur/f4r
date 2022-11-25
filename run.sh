@@ -4,6 +4,8 @@ file=$1
 
 echo "Pull c2eo Docker image"
 mkdir out
+ls -la
+ls -la test
 docker pull yegor256/c2eo:0.1.24
 echo "Finished pulling"
 

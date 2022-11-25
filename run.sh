@@ -8,7 +8,7 @@ docker pull yegor256/c2eo:0.1.24
 echo "Finished pulling"
 
 echo "Run c2eo Docker image"
-docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 $file out/hello.eo
+docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 $file out/global.eo
 echo "Finished running"
 
 echo "Check out/global.eo"

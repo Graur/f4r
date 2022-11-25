@@ -1,13 +1,40 @@
 #!/bin/bash
 
-mkdir out
-chmod -R 777 test
-docker pull yegor256/c2eo:0.1.24
-docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 test/hello.c out/hello.eo
-cat out/hello.eo
-ls -al
-ls -al test
-ls -al out
+file=$1
 
-curl -O http://search.maven.org/remotecontent?filepath=org/polystat/polystat/0.6.0/polystat-0.6.0-jar-with-dependencies.jar
-java -jar polystat-0.6.0-jar-with-dependencies.jar --files=out
+echo "Pull c2eo Docker image"
+mkdir out
+docker pull yegor256/c2eo:0.1.24
+echo "Finished pulling"
+
+echo "Run c2eo Docker image"
+docker run -v $(pwd):/eo yegor256/c2eo:0.1.24 $file out/hello.eo
+echo "Finished running"
+
+echo "Check out/global.eo"
+cat out/global.eo
+echo "Finished cheking"
+
+echo "Removing goto"
+# Download Dejump jar file
+curl -L -o dejump-0.0.2-jar-with-dependencies.jar "https://repo1.maven.org/maven2/org/eolang/dejump/0.0.2/dejump-0.0.2-jar-with-dependencies.jar"
+echo "Dejump jar was downloaded"
+java -jar dejump-0.0.2-jar-with-dependencies.jar --eo out/global.eo
+echo "GOTO was removed, check the result: "
+cat out/generated/global_transformed.eo
+echo "Rename file"
+mv out/generated/global_transformed.eo out/generated/global.eo
+echo "Finished Removing"
+
+echo "Run Polystat Jar"
+# Run Polystat (EO) and save reports to "results" folder
+curl -L -o polystat.jar "https://github.com/polystat/polystat-cli/releases/download/v0.1.11/polystat.jar"
+echo "Polystat (EO) analysis has started"
+touch polystat-eo-out.txt
+java -jar polystat.jar eo --in out/generated --to file=polystat-eo-out.txt --sarif
+echo "Polystat (EO) analysis has finished"o polystat.jar "https://github.com/polystat/polystat-cli/releases/download/v0.1.11/polystat.jar"
+echo "Finished running"
+
+echo "Check polystat-eo-out.txt"
+cat polystat-eo-out.txt
+echo "Finished checking"

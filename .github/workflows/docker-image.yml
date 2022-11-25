@@ -16,7 +16,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Validate
-      run: ./run test/check.c
+      run: bash run test/check.c
     - name: Upload results
       uses: actions/upload-artifact@v3
       with:
